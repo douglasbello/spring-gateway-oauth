@@ -2,6 +2,9 @@ package br.com.douglasbello.resourceserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class ResourceServerApplication {
@@ -10,4 +13,14 @@ public class ResourceServerApplication {
         SpringApplication.run(ResourceServerApplication.class, args);
     }
 
+}
+
+@RestController
+@RequestMapping("/hello")
+class HelloController {
+
+    @GetMapping
+    public String hello() {
+        return "Hello, World!";
+    }
 }

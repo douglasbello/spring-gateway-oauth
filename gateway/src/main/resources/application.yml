@@ -1,0 +1,31 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: gateway
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: gateway
+            client-secret: Nj6RjvR2FehHCpVoBgythWhunKhmMLA3
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/douglasbello
+
+  cloud:
+    gateway:
+      routes:
+        - id: hello
+          uri: http://localhost:8081
+          predicates:
+            - Path=/hello/**
+          filters:
+            - TokenRelay=
